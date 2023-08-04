@@ -40,4 +40,26 @@ function playRound(userInput) {
       }
   }
 }
-console.log(playRound("paper"));
+// console.log(playRound("paper"));
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").trim();
+        const computerSelection = computerPlay();
+        const roundResult = playRound(playerSelection, computerSelection);
+
+        console.log(roundResult);
+
+        if (roundResult.startsWith("You Win!")) {
+            playerScore++;
+        } else if (roundResult.startsWith("You Lose!")) {
+            computerScore++;
+        }
+    }
+
+    console.log("Game Over!");
+    console.log(`Final Scores: You: ${playerScore} | Computer: ${computerScore}`);
+}
+game();
