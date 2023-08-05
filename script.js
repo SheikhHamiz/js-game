@@ -76,3 +76,4 @@ function game() {
     playAgain = playAgainInput === "yes";
   }
 }
+game()
