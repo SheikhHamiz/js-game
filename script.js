@@ -9,10 +9,8 @@ function computerPlay() {
   }
 }
 
-function playRound(userInput) {
-  computerInput = computerPlay();
-  console.log(`computer chose ${computerInput}`);
-  switch(computerInput.toLowerCase()) {
+function playRound(userInput, computerInput) {
+  switch(computerInput) {
     case 'rock':
       if(userInput === 'paper'){
         return 'You Win!';
@@ -48,15 +46,15 @@ function game() {
     let draw = 0;
 
     for (let i = 0; i < 5; i++) {
-      let playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").trim();
-      while (playerSelection.toLowerCase() !== 'rock' && playerSelection.toLowerCase() !== 'paper' &&
-            playerSelection.toLowerCase() !== 'scissors') 
+      let playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").trim().toLowerCase();
+      while (playerSelection != null && playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') 
       {
-              playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").trim();
+              alert("please input only rock, paper or scissors");
+              playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").toLowerCase().trim();
       }
-      console.log(`You chose ${playerSelection}`);
-      const computerSelection = computerPlay();
-      const roundResult = playRound(playerSelection.toLowerCase(), computerSelection);
+      const computerInput = computerPlay().toLowerCase();
+      console.log(`You chose ${playerSelection} || computer chose ${computerInput}`);
+      const roundResult = playRound(playerSelection, computerInput);
       console.log(roundResult);
 
       if (roundResult.startsWith("You Win!")) {
