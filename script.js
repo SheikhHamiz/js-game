@@ -47,7 +47,10 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
       let playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").trim().toLowerCase();
-      while (playerSelection != null && playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') 
+      if (playerSelection == null) {
+        return null;
+      }
+      while (playerSelection !== "" && playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') 
       {
               alert("please input only rock, paper or scissors");
               playerSelection = prompt("Round " + (i + 1) + ": Enter 'Rock', 'Paper', or 'Scissors'").toLowerCase().trim();
